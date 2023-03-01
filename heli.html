@@ -1,0 +1,185 @@
+<!doctype html>
+
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+    <meta name='description' content='Heli-boarding trip to the North Cascades'>
+    <meta name='author' content='Ryan Smith'>
+    <meta http-equiv='cache-control' content='max-age=0' />
+    <meta http-equiv='cache-control' content='no-store' />
+    <meta http-equiv='expires' content='0' />
+    <meta property='og:title' content="🚁 Victor Romeo" />
+    <meta property='og:image' content='heli/apple-touch-icon.png' />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Monoton&display=swap" rel="stylesheet">
+    <link rel='apple-touch-icon' sizes='150x150' href='heli/apple-touch-icon.png'>
+    <link rel='icon' sizes='192x192' href='heli/andriod-touch-icon.png'>
+
+    <title>🚁 Victor Romeo</title>
+</head>
+
+<body id="main-content">
+    <div class="hero">
+        <h1>Heli - Mazama, 2023</h1>
+        <div>
+            <a download href="heli/heli.zip" id="download-all"></a>
+        </div>
+    </div>
+    <div class="media-container"></div>
+</body>
+
+<style>
+    h1,
+    h2 {
+        color: rgb(255, 20, 147)
+    }
+    
+    h1 {
+        font-size: 50px;
+        margin: 15px;
+    }
+    
+    h2 {
+        margin: 0 5px
+    }
+    
+    video {
+        border: 1px solid rgb(255, 20, 147);
+    }
+    
+    body {
+        font-family: "Monoton", cursive;
+    }
+    
+    button {
+        font-family: 'Bungee', cursive;
+        font-size: 30px;
+        filter: drop-shadow(5px 5px 5px rgb(255, 20, 147));
+    }
+    
+    .hero {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        border-radius: 4px;
+        padding: 20px;
+        margin: 40px 20px;
+    }
+    
+    .media-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .media-item {
+        width: 90%;
+        border-bottom: 2px dashed rgb(255, 20, 147);
+        padding-bottom: 25px;
+        margin-bottom: 30px;
+    }
+</style>
+
+<script src="scripts/domUtility.js"></script>
+<script src="scripts/video_manifest.js"></script>
+
+<script>
+    (function() {
+        var videos = [{
+            location: 'heli/GOPR0309.MP4'
+        }, {
+            location: 'heli/GOPR0310.MP4'
+        }, {
+            location: 'heli/GOPR0311.MP4'
+        }, {
+            location: 'heli/GOPR0313.MP4'
+        }, {
+            location: 'heli/GOPR0314.MP4'
+        }, {
+            location: 'heli/GOPR0315.MP4'
+        }, {
+            location: 'heli/GOPR0316.MP4'
+        }, {
+            location: 'heli/GOPR0317.MP4'
+        }, {
+            location: 'heli/GOPR0318.MP4'
+        }, {
+            location: 'heli/GOPR0319.MP4'
+        }, {
+            location: 'heli/GOPR0320.MP4'
+        }, {
+            location: 'heli/GOPR0321.MP4'
+        }, {
+            location: 'heli/GOPR0322.MP4'
+        }, {
+            location: 'heli/GOPR0323.MP4'
+        }, {
+            location: 'heli/GOPR0324.MP4'
+        }, {
+            location: 'heli/GOPR0325.MP4'
+        }, {
+            location: 'heli/GP010310.MP4'
+        }, ]
+
+        function buildDownloadAll() {
+            var videoCount = videos.length
+            var downloadButton = domUtility.buildNode('button', `Download all ${videoCount} videos`)
+            var downloadLink = document.getElementById('download-all')
+            downloadLink.appendChild(downloadButton)
+        }
+
+        function buildMediaItems() {
+            var mediaContainer = document.getElementsByClassName('media-container')[0]
+            videos.forEach(function(video) {
+                var mediaItem = domUtility.buildNode('div', '', [{
+                    key: 'class',
+                    value: 'media-item'
+                }]);
+                var videoName = video.location.split('/')[1]
+                var videoTitle = videoName.split('.')[0]
+                var itemHeader = domUtility.buildNode('h2', videoTitle)
+                var itemDownloadButton = domUtility.buildNode('button', `Download ${videoName}`)
+                var itemDownloadLink = domUtility.buildNode('a', '', [{
+                    key: 'href',
+                    value: video.location
+                }, {
+                    key: 'download',
+                    value: videoName
+                }])
+                var itemVideo = domUtility.buildNode('video', 'Your browser does not suport this video.', [{
+                    key: 'src',
+                    value: video.location
+                }, {
+                    key: 'type',
+                    value: 'video/mp4'
+                }, {
+                    key: 'width',
+                    value: '100%'
+                }, {
+                    key: 'controls',
+                    value: ''
+                }])
+
+                itemDownloadLink.appendChild(itemDownloadButton)
+                domUtility.appendChildren(mediaItem, [
+                    itemHeader,
+                    itemVideo,
+                    itemDownloadLink
+                ])
+                mediaContainer.appendChild(mediaItem);
+            })
+        }
+
+        buildDownloadAll();
+        buildMediaItems();
+    })()
+</script>
+
+</html>
