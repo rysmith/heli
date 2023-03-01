@@ -1,6 +1,6 @@
 # 🚁 Heliboarding - Mazama, 2023
 
-- URL: [www.r4an.com/heli.html](www.r4an.com/heli.html)
+- URL: [www.r4an.com/heli.html](http://www.r4an.com/heli.html)
 - Location: Nothern Cascade
 - Outfit: [North Cascade Heli](https://heli-ski.com/)
 - Camera: GoPro Hero 4
