@@ -25,6 +25,9 @@
 <body id="main-content">
     <div class="hero">
         <h1>Heli - Mazama, 2023</h1>
+        <div class="banner">
+            The files hosted here are quite large. For the best viewing experience it is recommneded that you connect to WiFi while streaming, or download the videos.
+        </div>
         <div>
             <a download href="heli/heli.zip" id="download-all"></a>
         </div>
@@ -56,9 +59,13 @@
     }
     
     button {
-        font-family: 'Bungee', cursive;
         font-size: 30px;
         filter: drop-shadow(5px 5px 5px rgb(255, 20, 147));
+    }
+    
+    button,
+    .banner {
+        font-family: 'Bungee', cursive;
     }
     
     .hero {
@@ -70,6 +77,13 @@
         border-radius: 4px;
         padding: 20px;
         margin: 40px 20px;
+    }
+    
+    .banner {
+        margin-bottom: 25px;
+        background-color: rgb(145, 255, 20);
+        border-radius: 4px;
+        padding: 10px;
     }
     
     .media-container {
